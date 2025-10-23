@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3grolcrso18v"]
+
+[ext_resource type="PackedScene" uid="uid://cjj4c7pawnhhp" path="res://scenes/worldgen.tscn" id="1_uwrxv"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0191586, 2592.3, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.953961, -0.238515, 0.181848, 0.145389, 0.898043, 0.415188, -0.262336, -0.369635, 0.891375, 0, 109.251, 173.518)
+
+[node name="VoxelViewer" type="VoxelViewer" parent="Camera3D"]
+
+[node name="Worldgen" parent="." instance=ExtResource("1_uwrxv")]

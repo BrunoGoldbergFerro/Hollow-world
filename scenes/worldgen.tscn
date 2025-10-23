@@ -1,0 +1,24 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjj4c7pawnhhp"]
+
+[ext_resource type="VoxelBlockyModelEmpty" uid="uid://054pldyxvwd" path="res://scenes/blocks/air.tres" id="1_jkoht"]
+[ext_resource type="VoxelBlockyModelCube" uid="uid://bl3cbx1x826fo" path="res://scenes/blocks/generic_cube.tres" id="2_fjcnk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gaj14"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uwrxv"]
+
+[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_p7t5i"]
+noise = SubResource("FastNoiseLite_uwrxv")
+channel = 0
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_iywne"]
+models = Array[VoxelBlockyModel]([ExtResource("1_jkoht"), ExtResource("2_fjcnk")])
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_jkoht"]
+library = SubResource("VoxelBlockyLibrary_iywne")
+
+[node name="Worldgen" type="VoxelTerrain"]
+material_override = SubResource("StandardMaterial3D_gaj14")
+generator = SubResource("VoxelGeneratorNoise2D_p7t5i")
+mesher = SubResource("VoxelMesherBlocky_jkoht")
